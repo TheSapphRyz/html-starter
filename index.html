@@ -1,96 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Telegram Mini App</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #2f3136; /* Темный фон, как в Discord */
+            color: #ffffff; /* Белый текст */
+            width: 100%; /* Полная ширина */
+            height: 100vh; /* Полная высота */
+            overflow: hidden; /* Запретить прокрутку страницы */
+        }
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background-color: #202225; /* Цвет заголовка */
+            border-radius: 8px; /* Закругление краев заголовка */
+            margin: 10px; /* Отступы */
+        }
+        .header img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .header .user-info span {
+            margin-left: 10px;
+        }
+        .content {
+            flex-grow: 1; /* Позволяет контенту занимать оставшееся пространство */
+            padding: 20px;
+            overflow-y: auto; /* Включить прокрутку для контента */
+        }
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            background-color: #202225;
+            padding: 10px 0;
+            border-radius: 8px; /* Закругление краев для подложки кнопок */
+            margin: 10px; /* Отступы */
+        }
+        .footer button {
+            background-color: #202225; /* Цвет кнопок */
+            color: #ffffff; /* Цвет текста */
+            border: none;
+            border-radius: 5px; /* Закругление краев кнопок */
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #dog {
+            position: absolute;
+            width: 100px;
+            transition: all 0.3s;
+        }
+    </style>
+    <script async src="https://telegram.org/js/telegram-web-app.js"></script> <!-- Вставка скрипта Telegram -->
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <div class="user-info">
+                <img id="avatar"alt="Avatar">
+                <span id="username">Пользователь</span>
+                <span id="balance">Баланс: 100₽</span>
+            </div>
+        </div>
+        <div class="content">
+            <div id="score">Счет: 0</div>
+            <img id="dog" src="nyanya.jpg" alt="Собака">
+        </div>
+        <div class="footer">
+            <button onclick="button1Click()">Кнопка 1</button>
+            <button onclick="button2Click()">Кнопка 2</button>
+            <button onclick="button3Click()">Кнопка 3</button>
+        </div>
+    </div>
+    <script>
+
+        let score = 0;
+        const dog = document.getElementById('dog');
+        const scoreDisplay = document.getElementById('score');
+        const dogSize = 100; // Size of the dog image
+
+        function getAvailableSpace() {
+            const headerRect = document.querySelector('.header').getBoundingClientRect();
+            const footerRect = document.querySelector('.footer').getBoundingClientRect();
+            const scoreRect = document.getElementById('score').getBoundingClientRect();
+            const bodyRect = document.body.getBoundingClientRect();
+            const availableWidth = bodyRect.width;
+            const availableHeight = bodyRect.height - headerRect.height - footerRect.height;
+            const scoreAreaWidth = scoreRect.width + 20; //Add some padding
+            const scoreAreaHeight = scoreRect.height + 20;
+            const scoreAreaX = scoreRect.left;
+            const scoreAreaY = scoreRect.top;
+
+
+            return {width: availableWidth, height: availableHeight, scoreArea: {x: scoreAreaX, y: scoreAreaY, w: scoreAreaWidth, h: scoreAreaHeight}};
+        }
+
+        function randomPosition() {
+            const availableSpace = getAvailableSpace();
+            const maxX = availableSpace.width - dogSize;
+            const maxY = availableSpace.height - dogSize;
+            let x, y;
+
+            do {
+                x = Math.random() * maxX;
+                y = Math.random() * maxY;
+            } while (checkCollision(x, y, availableSpace.scoreArea));
+
+            dog.style.left = `${x}px`;
+            dog.style.top = `${y}px`;
+        }
+
+        function checkCollision(dogX, dogY, scoreArea){
+            return (dogX + dogSize > scoreArea.x && dogX < scoreArea.x + scoreArea.w && dogY + dogSize > scoreArea.y && dogY < scoreArea.y + scoreArea.h);
+        }
+
+        dog.addEventListener('click', () => {
+            score++;
+            scoreDisplay.textContent = `Счет: ${score}`;
+            randomPosition();
+        });
+        dog.onload = randomPosition;
+
+    </script>
+    <script>
+        const tg = window.Telegram.WebApp;
+        let user = {}
+        window.addEventListener('DOMContentLoaded', () => {
+            // Ensure the WebApp API is initialized
+            tg.ready();
+
+            // Get user data
+            const user = tg.initDataUnsafe?.user;
+
+            if (user) {
+                // Populate user info
+                const avatar = document.getElementById('user-avatar');
+                const userName = document.getElementById('user-name');
+                const userId = document.getElementById('user-id');
+
+                avatar.src = user.photo_url;
+                userName.textContent = `${user.first_name} ${user.last_name}`;
+                userId.textContent = `ID: ${user.id}`;
+            } else {
+                // If no user data, show defaults
+                document.getElementById('user-info').textContent = 'Unable to load user information.';
+            }
+        });
+
+        function sendData(data) {
+            fetch('http://127.0.0.1:5000/send-data', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .catch(error => {
+                console.error("Ошибка отправки данных:", error);
+            });
+        }
+
+        function button1Click() {
+            sendData({ action: "button1_click", userId: user.id });
+            window.location.href='page2.html'
+        }
+
+        function button2Click() {
+            sendData({ action: "button2_click", user });
+        }   
+
+        function button3Click() {
+            sendData({ action: "button3_click", userId: user.id });
+        }
+
+    </script>
+</body>
 </html>
